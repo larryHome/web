@@ -1,15 +1,18 @@
 package kr.co.intune.user.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DUserDao extends UserDao {
 
-	@Override
 	public Connection getConnection() throws ClassNotFoundException,
 			SQLException {
-		
-		return null;
+		Class.forName("com.mysql.jdbc.Driver");
+
+		Connection c = DriverManager.getConnection(
+				"jdbc:mysql://localhost/intune", "intuneDev", "intune1234");
+		return c;
 	}
 
 }
